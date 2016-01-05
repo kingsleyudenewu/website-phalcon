@@ -16,3 +16,5 @@ vendor/
 
 ## Directory-based project format:
 .idea/
+
+tests/_output/*

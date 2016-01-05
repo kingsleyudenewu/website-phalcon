@@ -3,9 +3,13 @@
     "vlucas/phpdotenv": "2.1.x-dev",
     "nesbot/carbon": "1.21.0"
   },
+  "require-dev": {
+    "codeception/codeception": "*"
+  },
   "autoload": {
     "psr-4": {
-      "Models\\": "models/"
+      "Models\\": "models/",
+      "Tests\\": "tests/"
     }
   }
 }
