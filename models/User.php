@@ -14,6 +14,14 @@ class User extends Model
     }
 
     /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * @return mixed
      */
     public function getName()
