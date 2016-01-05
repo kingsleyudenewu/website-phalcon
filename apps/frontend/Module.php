@@ -22,7 +22,7 @@ class Module implements ModuleDefinitionInterface
 
         $loader->registerNamespaces(array(
             'Phalcon\Frontend\Controllers' => __DIR__ . '/controllers/',
-            'Phalcon\Frontend\Models' => __DIR__ . '/models/',
+            'Phalcon\Models' => APP_PATH . '/models/',
         ));
 
         $loader->register();
@@ -36,11 +36,6 @@ class Module implements ModuleDefinitionInterface
     public function registerServices(DiInterface $di)
     {
         /**
-         * Read configuration
-         */
-        $config = include APP_PATH . "/apps/frontend/config/config.php";
-
-        /**
          * Setting up the view component
          */
         $di['view'] = function () {
@@ -48,18 +43,6 @@ class Module implements ModuleDefinitionInterface
             $view->setViewsDir(__DIR__ . '/views/');
 
             return $view;
-        };
-
-        /**
-         * Database connection is created based in the parameters defined in the configuration file
-         */
-        $di['db'] = function () use ($config) {
-            $config = $config->database->toArray();
-
-            $dbAdapter = '\Phalcon\Db\Adapter\Pdo\\' . $config['adapter'];
-            unset($config['adapter']);
-
-            return new $dbAdapter($config);
         };
     }
 }

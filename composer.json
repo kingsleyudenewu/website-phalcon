@@ -1,0 +1,11 @@
+{
+  "require": {
+    "vlucas/phpdotenv": "2.1.x-dev",
+    "nesbot/carbon": "1.21.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Models\\": "models/"
+    }
+  }
+}

@@ -73,12 +73,8 @@ $di->setShared('view', function () use ($config) {
  */
 $di->setShared('db', function () use ($config) {
     $dbConfig = $config->database->toArray();
-    $adapter = $dbConfig['adapter'];
-    unset($dbConfig['adapter']);
 
-    $class = 'Phalcon\Db\Adapter\Pdo\\' . $adapter;
-
-    return new $class($dbConfig);
+    return new \Phalcon\Db\Adapter\Pdo\Sqlite($dbConfig);
 });
 
 /**
