@@ -1,0 +1,9 @@
+<?php /* @var $this \Phalcon\Mvc\View */ ?>
+
+<?php foreach ($page->items as $item): /* @var $item \Models\Article */ ?>
+    <article>
+        <?php echo $item->getTitle() ?>
+    </article>
+<?php endforeach; ?>
+
+<?php $this->partial('partials/pagination');

@@ -1,0 +1,13 @@
+<?php if (isset($page)): ?>
+    <nav>
+        <ul class="pagination">
+            <li>
+                <a href="?page=<?= $page->before; ?>">Previous</a>
+            </li>
+            <li>
+                <a href="?page=<?= $page->next; ?>">Next</a>
+            </li>
+        </ul>
+    </nav>
+    <?php echo "You are in page ", $page->current, " of ", $page->total_pages; ?>
+<?php endif; ?>
