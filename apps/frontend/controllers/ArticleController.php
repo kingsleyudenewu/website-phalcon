@@ -17,8 +17,4 @@ class ArticleController extends CrudController implements \Phalcon\Mvc\Controlle
         return Article::class;
     }
 
-    public function viewAction(Article $article)
-    {
-        //$article is already instantiated
-    }
 }

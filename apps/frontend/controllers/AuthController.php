@@ -3,8 +3,9 @@
 namespace Phalcon\Frontend\Controllers;
 
 use Models\User;
+use Phalcon\Mvc\Controller;
 
-class AuthController extends ControllerBase
+class AuthController extends Controller
 {
 
     public function startAction()

@@ -6,18 +6,7 @@ use Phalcon\Mvc\Application;
 
 try
 {
-    /**
-     * Include modules
-     */
-    require __DIR__ . '/../config/modules.php';
-
-    /**
-     * Include routes
-     */
-    require __DIR__ . '/../config/routes.php';
-
-    echo $application->handle()->getContent();
-
+    echo $application->main();
 } catch (\Exception $e)
 {
     echo $e->getMessage() . '<br>';
