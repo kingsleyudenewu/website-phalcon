@@ -2,7 +2,9 @@
 
 namespace Phalcon\Frontend\Controllers;
 
-class IndexController extends ControllerBase
+use Phalcon\Mvc\Controller;
+
+class IndexController extends Controller
 {
 
     public function indexAction()

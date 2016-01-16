@@ -3,35 +3,22 @@
 namespace Phalcon\Frontend\Controllers;
 
 use Models\Article;
-use Phalcon\Paginator\Adapter\QueryBuilder;
+use Phalcon\Http\Request;
 
 /**
  * Class ArticleController
  * @package Phalcon\Frontend\Controllers
  */
-class ArticleController extends ControllerBase
+class ArticleController extends CrudController implements \Phalcon\Mvc\Controller\BindModelInterface
 {
 
-    public function indexAction()
+    static function getModelName()
     {
-        $currentPage = $this->request->getQuery('page');
+        return Article::class;
+    }
 
-        $item = new Article();
-
-        $builder = $item->getModelsManager()->createBuilder()
-            ->columns('*')
-            ->orderBy('id desc')
-            ->addFrom(Article::class);
-        /* @var $builder \Phalcon\Mvc\Model\Query\Builder */
-
-
-        $paginator = new QueryBuilder(array(
-                'builder' => $builder,
-                'limit'   => 10,
-                'page'    => $currentPage
-            )
-        );
-
-        $this->view->setVar('page', $paginator->getPaginate());
+    public function viewAction(Article $article)
+    {
+        //$article is already instantiated
     }
 }

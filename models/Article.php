@@ -9,6 +9,7 @@ use Phalcon\Mvc\Model;
 /**
  * Class Article
  *
+ * @method User getUser()
  * @method static Article published() Scope queries to articles that have been published.
  * @method static Article slug($slug) Scope queries to article containing slug.
  */
@@ -36,7 +37,7 @@ class Article extends Model
     public function initialize()
     {
         //belongsToMany(Tag)
-        $this->belongsTo('user_id', User::class, 'id');
+        $this->belongsTo('user_id', User::class, 'id', ['alias' => 'user']);
     }
 
     /**
