@@ -2,7 +2,6 @@
 
 namespace Lib\Mvc;
 
-use Phalcon\Config\Adapter\Ini;
 use Phalcon\Di;
 use Phalcon\Mvc\Router;
 
