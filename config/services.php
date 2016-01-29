@@ -99,6 +99,6 @@ $di->set('flash', function () {
 $di->setShared('dispatcher', function() use ($di) {
     $dispatcher = new Phalcon\Mvc\Dispatcher();
     $dispatcher->setDefaultNamespace('Phalcon\Frontend\Controllers');
-    $dispatcher->setBindModel(true);
+    $dispatcher->setModelBinding(true);
     return $dispatcher;
 });
