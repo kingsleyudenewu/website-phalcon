@@ -29,3 +29,8 @@ function laravelPath($path)
 {
     return getenv('LARAVEL_PATH') . '/' . $path;
 }
+
+function url($path)
+{
+    return getenv('ROOT_URL') . $path;
+}
