@@ -2,7 +2,7 @@
 
 namespace Phalcon\Frontend\Controllers;
 
-use Lib\Paginator\QueryBuilder;
+use Lib\Paginator\Adapter\QueryBuilder;
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Model;
 

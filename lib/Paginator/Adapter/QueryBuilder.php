@@ -1,6 +1,6 @@
 <?php
 
-namespace Lib\Paginator;
+namespace Lib\Paginator\Adapter;
 
 use Phalcon\Http\Request;
 use Phalcon\Paginator\Adapter;
