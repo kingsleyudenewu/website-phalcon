@@ -32,5 +32,5 @@ function laravelPath($path)
 
 function url($path)
 {
-    return getenv('ROOT_URL') . $path;
+    return getenv('PHALCON_URL') . $path;
 }
