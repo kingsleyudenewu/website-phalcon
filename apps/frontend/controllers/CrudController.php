@@ -9,6 +9,8 @@ use Phalcon\Mvc\Model;
 abstract class CrudController extends Controller
 {
 
+    const PAGE_SIZE = 10;
+
     public function viewAction(Model $model)
     {
         $this->view->setVar('model', $model);
@@ -41,7 +43,7 @@ abstract class CrudController extends Controller
 
         $paginator = new QueryBuilder(array(
                 'builder'     => $builder,
-                'limit'       => 10,
+                'limit'       => static::PAGE_SIZE,
                 'page'        => $currentPage,
                 'with_params' => true,
             )
