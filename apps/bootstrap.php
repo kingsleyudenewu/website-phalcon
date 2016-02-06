@@ -1,12 +1,13 @@
 <?php
 
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../lib/Includes.php';
+
+use Lib\Mvc\Application;
 
 //Load our environment
 $dotenv = new Dotenv\Dotenv(__DIR__ . '/../');
 $dotenv->load();
-
-use Phalcon\Mvc\Application;
 
 error_reporting(E_ALL);
 

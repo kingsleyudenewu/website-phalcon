@@ -3,6 +3,7 @@
 namespace Models;
 
 use Carbon\Carbon;
+use Models\Article\Tag as ArticleTag;
 use Phalcon\Mvc\Model;
 
 
@@ -38,6 +39,7 @@ class Article extends Model
     {
         //belongsToMany(Tag)
         $this->belongsTo('user_id', User::class, 'id', ['alias' => 'user']);
+        $this->hasMany('id', ArticleTag::class, 'article_id', ['alias' => 'articleTags']);
     }
 
     /**
@@ -77,7 +79,7 @@ class Article extends Model
      */
     public function getPublishedAt()
     {
-        return $this->published_at;
+        return new Carbon($this->published_at);
     }
 
     /**
@@ -102,6 +104,14 @@ class Article extends Model
     public function setPublished(int $published)
     {
         $this->published = $published;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**

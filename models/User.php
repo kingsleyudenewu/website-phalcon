@@ -3,6 +3,7 @@
 namespace Models;
 
 use Carbon\Carbon;
+use Phalcon\Di;
 use Phalcon\Mvc\Model;
 
 class User extends Model
@@ -115,5 +116,26 @@ class User extends Model
     public function setUpdatedAt($updated_at)
     {
         $this->updated_at = $updated_at;
+    }
+
+    private static $currentUser;
+
+    /**
+     * @return null|self
+     */
+    public static function getCurrent()
+    {
+        if (! self::$currentUser)
+        {
+            $session = Di::getDefault()->get('session');
+            $auth = $session->get('auth');
+
+            if ($auth)
+            {
+                self::$currentUser = self::findFirstById($auth['id']);
+            }
+        }
+
+        return self::$currentUser;
     }
 }

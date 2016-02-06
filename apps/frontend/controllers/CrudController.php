@@ -2,12 +2,14 @@
 
 namespace Phalcon\Frontend\Controllers;
 
+use Lib\Paginator\Adapter\QueryBuilder;
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Model;
-use Phalcon\Paginator\Adapter\QueryBuilder;
 
 abstract class CrudController extends Controller
 {
+
+    const PAGE_SIZE = 10;
 
     public function viewAction(Model $model)
     {
@@ -40,9 +42,10 @@ abstract class CrudController extends Controller
 
 
         $paginator = new QueryBuilder(array(
-                'builder' => $builder,
-                'limit'   => 10,
-                'page'    => $currentPage
+                'builder'     => $builder,
+                'limit'       => static::PAGE_SIZE,
+                'page'        => $currentPage,
+                'with_params' => true,
             )
         );
 

@@ -19,18 +19,6 @@ use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 $di = new FactoryDefault();
 
 /**
- * Registering a router
- */
-$di->setShared('router', function () {
-    $router = new Router();
-
-    $router->setDefaultModule('frontend');
-    $router->setDefaultNamespace('Phalcon\Frontend\Controllers');
-
-    return $router;
-});
-
-/**
  * The URL component is used to generate all kinds of URLs in the application
  */
 $di->setShared('url', function () use ($config) {
@@ -111,5 +99,6 @@ $di->set('flash', function () {
 $di->setShared('dispatcher', function() use ($di) {
     $dispatcher = new Phalcon\Mvc\Dispatcher();
     $dispatcher->setDefaultNamespace('Phalcon\Frontend\Controllers');
+    $dispatcher->setModelBinding(true);
     return $dispatcher;
 });

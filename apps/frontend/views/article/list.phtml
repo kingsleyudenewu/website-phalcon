@@ -1,0 +1,38 @@
+<?php /* @var $this \Phalcon\Mvc\View */
+use Lib\Mvc\View\Html; ?>
+
+    <h1>Articles</h1>
+    <hr/>
+
+<?php foreach ($page->items as $article): ?>
+    <?php /* @var $article \Models\Article */ ?>
+    <article>
+        <h2>
+            <a href="<?php echo url('/article/' . $article->getSlug()) ?>">
+                <?php echo $article->getTitle() ?>
+            </a>
+        </h2>
+
+        <div class="body">
+            <p><?php echo $article->getPublishedAt()->diffForHumans() ?> by: <?php echo $article->user->getName() ?></p>
+
+            <p>
+                <?php echo Html::trim($article->getBody(), 400) ?>
+            </p>
+        </div>
+        <?php if ($article->articleTags->count()): ?>
+            <ul class="tags">
+                <?php foreach ($article->articleTags as $articleTag): /* @var $articleTag \Models\Article\Tag */ ?>
+                    <li><a href="<?php echo url('/tag/' . $articleTag->tag->getSlug()) ?>"
+                           class="tag"><?php echo $articleTag->tag->getName() ?></a></li>
+                <? endforeach; ?>
+            </ul>
+        <?php endif; ?>
+        <a href="<?php echo url('/article', $article->getSlug()) ?>">
+            <h4>Continue reading</h4>
+        </a>
+        <hr/>
+    </article>
+<?php endforeach; ?>
+
+<?php $this->partial('partials/pagination');

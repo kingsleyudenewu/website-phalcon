@@ -2,10 +2,10 @@
     <nav>
         <ul class="pagination">
             <li>
-                <a href="?page=<?= $page->before; ?>">Previous</a>
+                <a href="<?= $page->beforeQuery; ?>">Previous</a>
             </li>
             <li>
-                <a href="?page=<?= $page->next; ?>">Next</a>
+                <a href="<?= $page->nextQuery; ?>">Next</a>
             </li>
         </ul>
     </nav>

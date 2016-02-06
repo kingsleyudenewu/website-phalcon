@@ -12,13 +12,11 @@ use Phalcon\Http\Request;
 class ArticleController extends CrudController implements \Phalcon\Mvc\Controller\BindModelInterface
 {
 
+    const PAGE_SIZE = 5;
+
     static function getModelName()
     {
         return Article::class;
     }
 
-    public function viewAction(Article $article)
-    {
-        //$article is already instantiated
-    }
 }
