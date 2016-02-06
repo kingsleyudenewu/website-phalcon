@@ -4,12 +4,13 @@ namespace Phalcon\Frontend\Controllers;
 
 use Models\Article;
 use Phalcon\Http\Request;
+use Phalcon\Mvc\Controller\BindModelInterface;
 
 /**
  * Class ArticleController
  * @package Phalcon\Frontend\Controllers
  */
-class ArticleController extends CrudController implements \Phalcon\Mvc\Controller\BindModelInterface
+class ArticleController extends CrudController implements BindModelInterface
 {
 
     const PAGE_SIZE = 5;
@@ -18,5 +19,4 @@ class ArticleController extends CrudController implements \Phalcon\Mvc\Controlle
     {
         return Article::class;
     }
-
 }

@@ -1,3 +1,40 @@
-<?php /* @var $this \Phalcon\Mvc\View */ ?>
+<?php
+/* @var $this \Phalcon\Mvc\View */
+/* @var $model \Models\Article */
+?>
 
-<?php echo $model->getTitle() ?>
+<h1><?php echo $model->getTitle() ?></h1>
+<hr/>
+<article class="article-body">
+    <p><?php echo $model->getPublishedAt()->diffForHumans() ?> by: <?php $model->user->getName() ?></p>
+    <?php echo $model->getBody() ?>
+</article>
+
+<?php if ($model->articleTags->count()): ?>
+    <ul class="tags">
+        <?php foreach ($model->articleTags as $articleTag): ?>
+            <li><a href="<?php url('/tag/' . $articleTag->tag->getSlug()) ?>"
+                   class="tag"><?php echo $articleTag->tag->getName() ?></a></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+
+<div id="disqus_thread"></div>
+<script>
+
+    var disqus_config = function () {
+        this.page.url = '<?php echo url('/article/', $model->getSlug())  ?>';
+        this.page.identifier = '<?php echo $model->getId() ?>';
+    };
+
+    (function () { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '<?php getenv('DISQUS_URL') ?>';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+        powered by Disqus.</a></noscript>

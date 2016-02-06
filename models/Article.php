@@ -42,6 +42,11 @@ class Article extends Model
         $this->hasMany('id', ArticleTag::class, 'article_id', ['alias' => 'articleTags']);
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     /**
      * @return string
      */
