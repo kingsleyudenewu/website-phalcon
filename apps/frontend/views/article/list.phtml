@@ -8,7 +8,7 @@ use Lib\Mvc\View\Html; ?>
     <?php /* @var $article \Models\Article */ ?>
     <article>
         <h2>
-            <a href="<?php echo url('/article/' . $article->getSlug()) ?>">
+            <a href="<?php echo url('/article/view/' . $article->getId() . '/' . $article->getSlug()) ?>">
                 <?php echo $article->getTitle() ?>
             </a>
         </h2>

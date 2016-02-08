@@ -1,0 +1,56 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Latest Posts</h4>
+    </div>
+    <ul class="list-group">
+        <?php foreach ($latest as $article): /* @var $article \Models\Article */ ?>
+            <li class="list-group-item">
+                <a href="{{ url('article', $article->getSlug()) }}">{{ $article->getTitle() }}</a> - {{
+                $article->getPublishedAt()->diffForHumans() }}
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>
+            External
+        </h4>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="https://github.com/<?php echo getenv('GITHUB_USERNAME') ?>" target="_blank"><img class="footer-img"
+                                                                                                     src="<?php echo getenv('ROOT_URL') ?>/build/img/GitHub-Mark-64px.png"/>
+                - Github</a>
+        </li>
+        <li class="list-group-item">
+            <a href="<?php echo getenv('LINKEDIN_PROFILE') ?>" target="_blank"><img class="footer-img"
+                                                                                   src="<?php echo getenv('ROOT_URL') ?>/build/img/In-2C-59px-R.png"/>
+                - LinkedIn</a>
+        </li>
+        <li class="list-group-item">
+            <a href="<?php echo getenv('YOUTUBE_CHANNEL') ?>" target="_blank"><img class="footer-img"
+                                                                                  src="<?php echo getenv('ROOT_URL') ?>/build/img/YouTube-social-squircle_red_128px.png"/>
+                - Youtube</a>
+        </li>
+    </ul>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>
+            <a href="{{ url('tag') }}">Tags</a>
+        </h4>
+    </div>
+    <div class="panel-body">
+        <ul class="tags">
+            <?php foreach ($tags as $tag): ?>
+                <li>
+                    <a class="tag" href="{{ url('tag', $tag->getSlug()) }}">{{ $tag->getName() }} ({{
+                        $tag->articles()->count() }})</a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
